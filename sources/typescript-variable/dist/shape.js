@@ -1,29 +1,26 @@
-export class Shape {
-    private _x: number;
-    private _y: number;
-
-    constructor(x: number, y: number) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Shape = void 0;
+class Shape {
+    constructor(x, y) {
         this._x = x;
         this._y = y;
     }
-
     get x() {
         return this._x;
     }
-
-    set x(x: number) {
+    set x(x) {
         this._x = x;
     }
-
     get y() {
         return this._y;
     }
-
-    set y(y: number) {
+    set y(y) {
         this._y = y;
     }
-
-    toString(): string {
+    toString() {
         return `(x: ${this._x}, y: ${this._y})`;
     }
 }
+exports.Shape = Shape;
+//# sourceMappingURL=shape.js.map
