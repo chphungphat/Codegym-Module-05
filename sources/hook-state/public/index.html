@@ -24,20 +24,78 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <title>React App</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <script type="text/babel">
+      // const App = () => {
+      //   return (
+      //     <div>
+      //      <button>{this.props.name}</button>
+      //     </div>
+      //   );
+      // };
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      // class PostItem export
+      // class App extends React.Component {
+      //   constructor(props) {
+      //     super(props);
+      //     this.state = {
+      //       showPostItem: false,
+      //     };
+      //   }
+
+      //   handleClickButton = () => {
+      //     this.setState({
+      //       showPostItem: !this.state.showPostItem,
+      //     });
+      //   };
+
+      //   render() {
+      //     return (
+      //       <div>
+      //         <button onClick={this.handleClickButton}>{this.props.name}</button>
+      //         {this.state.showPostItem && <PostItem />}
+      //       </div>
+      //     );
+      //   }
+      // }
+
+      const PostItem = () => {
+        return <h1>The result</h1>;
+      };
+
+      const App = ({ name, notname }) => {
+        const [isClick, setIsClick] = useState(false);
+
+        const handleClickButton = () => {
+          setIsClick(!isClick);
+        };
+
+        return (
+          <div>
+            <button onClick={handleClickButton}>{name}</button>
+            {isClick && <PostItem />}
+          </div>
+        );
+      };
+
+      const container = document.getElementById("root");
+
+      const root = ReactDOM.createRoot(container);
+
+      root.render(<App name="click me" notname="don't click me" />);
+    </script>
   </body>
 </html>
