@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [jobs, setJobs] = useState([]);
+    const [job, setJob] = useState();
+
+    const handleAdd = () => {
+        setJobs(prevState => [...prevState, job]);
+    }
+
+    const handleChange = (value) => {
+        setJob(value);
+    }
+
+    const handleDelete = (index) => {
+        setJobs(jobs.filter((_, index2) => index !== index2));
+    }
+
+    return (
+        <div>
+            <input
+                value={job}
+                onChange={event => handleChange(event.target.value)}
+            />
+
+            <button onClick={handleAdd}>Click Me</button>
+
+            <ul>
+                {jobs.map((job, index) => (
+                    <li key={index}>
+                        {job}
+                        <button onClick={() => handleDelete(index)}>Delete it</button>
+                    </li>
+                ))}
+
+            </ul>
+        </div>
+    )
 }
 
 export default App;
